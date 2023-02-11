@@ -1,19 +1,24 @@
+import random
 from flask import Flask, render_template
 import requests
 
 
 app = Flask(__name__)
-api_key = ""
 
 @app.route('/') 
 def index():
-    pokemon = pokemon
-    response = requests.get(f'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/959.png')
-    pokemon  = response.json()
-    return render_template ('index.html', pokemon = )
+    rid = random.randint(1,1001)
+    response = requests.get(f'https://pokeapi.co/api/v2/pokemon/{rid}')
+    pokemon = response.json()
+    print(pokemon)
+    # pokemon = [rid],["official-artwork"],["other"],["front_default"], 
+    return render_template ('index.html', pokemon = pokemon)
 
-print ("https://pokeapi.co/api/v2/{endpoint}/")
 
-def tinkaton :
-    "sprites" : "official art",
-    
+if __name__== '__main__':
+    app.run(debug=True, host='0.0.0.0')
+# def tinkaton :
+# print(["sprites"] ["official art"],
+# def pokemon ():
+#     print([pokemon],["sprites"],["other"],["official artwork"])
+
